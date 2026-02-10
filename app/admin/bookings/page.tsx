@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 
 export default async function AdminBookingsPage() {
