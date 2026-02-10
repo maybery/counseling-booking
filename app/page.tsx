@@ -1,65 +1,74 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main className="px-6 py-12">
+      <div className="max-w-5xl mx-auto space-y-10">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <div className="space-y-4">
+            <h1 className="text-4xl font-semibold tracking-tight">
+              心理咨询预约（演示站）
+            </h1>
+            <p className="text-neutral-600 text-base leading-relaxed">
+              用于展示“个人咨询师官网 + 在线预约”的示例项目（30天作品）。
+              页面文案为演示用途，后续可以替换成你的真实风格与定位。
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/booking"
+                className="rounded-xl bg-black text-white px-5 py-3 text-sm font-medium hover:opacity-90 transition"
+              >
+                去预约
+              </Link>
+              <Link
+                href="/services"
+                className="rounded-xl border border-neutral-300 px-5 py-3 text-sm font-medium hover:bg-neutral-50 transition"
+              >
+                查看服务
+              </Link>
+            </div>
+
+            <p className="text-xs text-neutral-500">
+              Day3：统一导航与页脚，让网站更像可交付产品。
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-neutral-200 p-6 space-y-4">
+            <h2 className="text-lg font-medium">我可以提供的帮助（示例）</h2>
+            <ul className="space-y-2 text-neutral-700">
+              <li>• 情绪压力：焦虑、内耗、失眠与压力管理</li>
+              <li>• 关系困扰：亲密关系、沟通冲突、边界感</li>
+              <li>• 自我探索：自我价值、选择困难、人生方向</li>
+            </ul>
+
+            <div className="pt-2 text-sm text-neutral-600">
+              首次会谈通常用于了解你的诉求与期待，并共同商定目标与节奏。
+            </div>
+          </div>
+        </section>
+
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="rounded-2xl border border-neutral-200 p-5 space-y-2">
+            <h3 className="font-medium">保密与尊重</h3>
+            <p className="text-sm text-neutral-600">
+              在专业伦理框架内保护你的隐私与表达空间。
+            </p>
+          </div>
+          <div className="rounded-2xl border border-neutral-200 p-5 space-y-2">
+            <h3 className="font-medium">清晰的咨询设置</h3>
+            <p className="text-sm text-neutral-600">
+              时长、频率、费用与边界提前说明，减少不确定感。
+            </p>
+          </div>
+          <div className="rounded-2xl border border-neutral-200 p-5 space-y-2">
+            <h3 className="font-medium">稳定的陪伴</h3>
+            <p className="text-sm text-neutral-600">
+              不急着给建议，先把感受和需求理清楚。
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }
