@@ -1,10 +1,11 @@
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-
+import { cookies } from "next/headers";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 
 export default async function AdminBookingsPage() {
+    cookies()
     const { data, error } = await supabaseAdmin
         .from("bookings")
         .select("*")
