@@ -1,5 +1,7 @@
 import "./globals.css";
 import Link from "next/link";
+import AdminNavLink from "@/components/AdminNavLink";
+
 
 export const metadata = {
   title: "心理咨询预约（演示站）",
@@ -24,8 +26,7 @@ function Header() {
           >
             去预约
           </Link>
-          <Link className="hover:underline" href="/admin/bookings">管理</Link>
-
+          <AdminNavLink />
         </nav>
       </div>
     </header>

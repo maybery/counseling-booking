@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { supabaseBrowser } from "@/lib/supabaseBrowser";
 
 export default function AdminLoginPage() {
-    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [msg, setMsg] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
@@ -14,21 +12,21 @@ export default function AdminLoginPage() {
         setLoading(true);
         setMsg(null);
 
-        const { error } = await supabaseBrowser.auth.signInWithPassword({
-            email,
-            password,
+        const res = await fetch("/api/admin/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ password }),
         });
 
-        if (error) {
-            setMsg(error.message);
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+            setMsg(data?.error ?? "登录失败");
             setLoading(false);
             return;
         }
 
-        // 关键：强制整页跳转，让 Server Component 重新读取 session
-        location.replace("/admin/bookings");
+        window.location.href = "/admin/bookings";
     }
-
 
     return (
         <main className="px-6 py-10">
@@ -37,23 +35,13 @@ export default function AdminLoginPage() {
 
                 <form onSubmit={onSubmit} className="rounded-2xl border border-neutral-200 p-5 space-y-4">
                     <div className="space-y-2">
-                        <label className="text-sm font-medium">邮箱</label>
+                        <label className="text-sm font-medium">管理员密码</label>
                         <input
                             className="w-full rounded-xl border border-neutral-300 px-3 py-2"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="you@example.com"
-                        />
-                    </div>
-
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium">密码</label>
-                        <input
                             type="password"
-                            className="w-full rounded-xl border border-neutral-300 px-3 py-2"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            placeholder="••••••••"
+                            placeholder="输入 ADMIN_PASSWORD"
                         />
                     </div>
 
